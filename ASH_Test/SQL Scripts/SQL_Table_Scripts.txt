@@ -1,0 +1,42 @@
+﻿CREATE TABLE Employee (
+	employeeID INT NOT NULL,
+	firstName Varchar(30) NOT NULL,
+	lastName Varchar(50) NOT NULL,
+	address INT NOT NULL,
+	role INT NOT NULL,
+	salary INT NOT NULL
+	PRIMARY KEY (employeeID)
+	);
+
+CREATE TABLE Address (
+	addressID INT NOT NULL,
+	employeeID INT NOT NULL,
+	addressLine1 varchar(50),
+	addressLine2 varchar(50),
+	city varchar(50),
+	state varchar(2),
+	zipCode int,
+	county varchar(50),
+	PRIMARY KEY (addressID),
+	FOREIGN KEY (employeeID) REFERENCES Employee(employeeID)
+	);
+
+CREATE TABLE Role (
+	roleID INT NOT NULL,
+	employeeID INT NOT NULL,
+	roleType Varchar(50),
+	PRIMARY KEY (roleID),
+	FOREIGN KEY (employeeID) REFERENCES Employee(employeeID),
+	);
+
+	
+CREATE TABLE Salary (
+	salaryID INT NOT NULL,
+	employeeID INT NOT NULL,
+	isHourly BIT NOT NULL,
+	payRate decimal(10,2) NOT NULL,
+	expenseAccoutLimit decimal(10,2),
+	PRIMARY KEY (salaryID),
+	FOREIGN KEY (employeeID) REFERENCES Employee(employeeID)
+	);
+
